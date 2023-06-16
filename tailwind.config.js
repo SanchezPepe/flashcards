@@ -11,5 +11,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  modules: ["@nuxtjs/tailwindcss"],
 };

@@ -65,6 +65,9 @@
       "pinia": [
         "node_modules/pinia/dist/pinia"
       ],
+      "#vue-router": [
+        ".nuxt/vue-router"
+      ],
       "#imports": [
         ".nuxt/imports"
       ],

@@ -1,14 +1,8 @@
 <template>
-  <h1 class="text-3xl font-bold underline">Hello world!</h1>
-
-  <div>
-    <p>Count: {{ counter.count }}</p>
-    <button @click="counter.increment()">Increment</button>
-    <button @click="counter.decrement()">Decrement</button>
-  </div>
-
-  <div>
-    <NuxtWelcome />
+  <div class="min-h-screen bg-slate-800 pt-2 flex flex-col">
+    <div class="container mx-auto">
+      <NuxtPage />
+    </div>
   </div>
 </template>
 
