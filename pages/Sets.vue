@@ -3,11 +3,11 @@
     <h1>Flashcards Sets</h1>
     <div class="grid my-4">
       <div class="mx-1 grid grid-cols-2 gap-2">
-        <button class="pbutton">Create new set</button>
+        <button class="pbutton" @click="modal = true">New set</button>
         <button class="gbutton">Import set</button>
       </div>
 
-      <div class="flex mt-2 flex-wrap">
+      <div class="flex mt-2 flex-wrap justify-center">
         <SetCard
           v-for="card in cards"
           :key="card.id"
@@ -15,10 +15,12 @@
           :title="card.title"
           :description="card.description"
           :tags="card.tags"
-          class="sm:w-1/2 md:w-1/3 lg:w-1/4"
+          class="md:w-1/3 lg:w-1/4"
         ></SetCard>
       </div>
     </div>
+
+    <Modal @close="closeModal" :show="modal"></Modal>
   </div>
 </template>
 
@@ -28,6 +30,7 @@ import SetCard from "~/components/SetCard.vue";
 export default {
   setup() {
     const state = reactive({
+      modal: false,
       cards: [
         {
           title: "Set 1",
@@ -61,7 +64,13 @@ export default {
         },
       ],
     });
+
+    function closeModal() {
+      state.modal = false;
+    }
+
     return {
+      closeModal,
       ...toRefs(state),
     };
   },
