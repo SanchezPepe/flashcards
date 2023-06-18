@@ -1,5 +1,5 @@
 <template>
-  <div class="p-1">
+  <button @click="openDataSet" class="p-1">
     <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">{{ title }}</div>
@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </button>
 </template>
 
 <script lang="ts">
@@ -43,7 +43,13 @@ export default defineComponent({
     },
   },
   setup() {
-    return {};
+    function openDataSet() {
+      console.log("openDataSet");
+    }
+
+    return {
+      openDataSet,
+    };
   },
 });
 </script>
