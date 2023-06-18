@@ -53,6 +53,7 @@
 
 <script lang="ts">
 import { reactive, toRefs } from "vue";
+import { firestoreState } from "~/store/firestore";
 
 export default defineComponent({
   props: {
@@ -62,6 +63,7 @@ export default defineComponent({
     },
   },
   setup(_, { emit }) {
+    const firestore = firestoreState();
     const state = reactive({
       showModal: false,
       name: "",
@@ -82,9 +84,15 @@ export default defineComponent({
     });
 
     function createSet() {
-      console.log(`Hello, ${state.name}`);
+      const payload = {
+        name: state.newSet.name.value,
+        description: state.newSet.description.value,
+        tags: state.newSet.tags.value.split(","),
+        cards: {},
+      };
+      firestore.createFlashcardSet(payload);
+
       state.showModal = false;
-      state.name = "";
     }
 
     function closeModal() {
@@ -96,6 +104,7 @@ export default defineComponent({
     return {
       createSet,
       closeModal,
+      firestore,
       ...toRefs(state),
     };
   },

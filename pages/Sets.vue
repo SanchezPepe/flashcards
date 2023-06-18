@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <Modal @close="closeModal" :show="modal"></Modal>
+    <CreateModal @close="closeModal" :show="modal"></CreateModal>
   </div>
 </template>
 
